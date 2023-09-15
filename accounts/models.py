@@ -2,14 +2,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
+# Inside Project Imports
+from .managers import CustomUserManager
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(unique=True)
+    phone = models.CharField(unique=True)
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
     created_at = models.DateField(auto_now_add=True)
-    edited_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
