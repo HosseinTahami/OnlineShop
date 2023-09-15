@@ -7,6 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     img = models.ImageField()
+    category = models.ForeignKey("Category", related_name="products")
 
 
 class Category(models.Model):
